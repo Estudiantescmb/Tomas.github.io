@@ -561,4 +561,165 @@ Telefono:<input type="text"name="nombre" size="26" maxlength="8"/><br>
 
 </html>
 
+   <br> <br>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Compras Simulado</title>
+  <style>
+    body {
+      font-family: Arial;
+      max-width: 600px;
+      margin: auto;
+    }
+    .producto {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    #carrito {
+      background: #f9f9f9;
+      border: 2px dashed #ccc;
+      padding: 10px;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      margin-top: 5px;
+    }
+    img {
+      display: block;
+      margin: 10px 0;
+      max-width: 40%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Componentes de Robótica</h1>
+  <p>Haz clic en "Agregar al carrito" para simular una compra.</p>
+
+  <div class="producto">
+    <h3>Placa Arduino Uno</h3>
+    <img src="https://http2.mlstatic.com/D_NQ_NP_701197-MLU74474835661_022024-O.webp"width="40%" height="40%">
+    <p>Microcontrolador para proyectos electrónicos con múltiples entradas y salidas.</p>
+    <p>Precio: $120.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Placa Arduino Uno', 120000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>ESP32</h3>
+    <img src="https://sumador.com/cdn/shop/products/ModuloESP32-DEVKITV1-30pines-min_1_2048x2048.jpg?v=1589134388"width="40%" height="40%">
+    <p>Módulo WiFi y Bluetooth para proyectos IoT con alta capacidad de procesamiento.</p>
+    <p>Precio: $45.000</p>
+    <button class="btn" onclick="agregarAlCarrito('ESP32', 45000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>ESP8266</h3>
+    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_774567-MLU78658795187_082024-T.webp"width="40%" height="40%">
+    <p>Módulo WiFi económico para proyectos conectados a internet.</p>
+    <p>Precio: $75.000</p>
+    <button class="btn" onclick="agregarAlCarrito('ESP8266', 75000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Servomotor SG90</h3>
+    <img src="https://cdnx.jumpseller.com/mactornica/image/9460346/1.jpg?1657910644"width="40%" height="40%">
+    <p>Motor pequeño con control de posición para robótica y automatización.</p>
+    <p>Precio: $75.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Servomotor SG90', 75000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Sensor Ultrasonico HC-SR04</h3>
+    <img src="https://http2.mlstatic.com/D_NQ_NP_893270-MCO70652341415_072023-O.webp"width="40%" height="40%">
+    <p>Sensor para medir distancia mediante ondas ultrasónicas.</p>
+    <p>Precio: $30.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Sensor Ultrasonico HC-SR04', 30000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Motor DC 12V</h3>
+    <img src="https://electronilab.co/wp-content/uploads/2022/03/Motor-DC-775-Eje-5mm-Alta-Potencia-CNC-3018-1.jpg"width="40%" height="40%">
+    <p>Motor de corriente continua para proyectos de movimiento y robótica.</p>
+    <p>Precio: $50.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Motor DC 12V', 50000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Display LCD 16x2</h3>
+    <img src="https://ferretronica.com/cdn/shop/products/display_lcd_2x16_verde_con_retroiluminacion_ferretronica_d4f89ced-4c4e-4dbd-9e1d-82f14ebf269d.jpg?v=1577221310"width="40%" height="40%">
+    <p>Pantalla para mostrar texto en proyectos electrónicos.</p>
+    <p>Precio: $40.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Display LCD 16x2', 40000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Sensor de Temperatura DHT11</h3>
+    <img src="https://dualtronica.com/2163-thickbox_default/sensor-de-temperatura-y-humedad-relativa-dht11.jpg"40%" height="40%">
+    <p>Sensor básico para medir temperatura y humedad ambiental.</p>
+    <p>Precio: $25.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Sensor de Temperatura DHT11', 25000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Joystick Analógico</h3>
+    <img src="https://http2.mlstatic.com/D_NQ_NP_865494-MCO43648318313_102020-O.webp"width="40%" height="40%">
+    <p>Control analógico para proyectos de interfaz y robótica.</p>
+    <p>Precio: $35.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Joystick Analógico', 35000)">Agregar al carrito</button>
+  </div>
+
+  <div class="producto">
+    <h3>Placa Protoboard</h3>
+    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_841091-MLU31617889818_072019-F.webp" "width="40%" height="40%">
+    <p>Placa para montaje de circuitos electrónicos sin soldadura.</p>
+    <p>Precio: $15.000</p>
+    <button class="btn" onclick="agregarAlCarrito('Placa Protoboard', 15000)">Agregar al carrito</button>
+  </div>
+
+  <div id="carrito">
+    <h2>Carrito de Compras</h2>
+    <ul id="listaCarrito"></ul>
+    <p><strong>Total:</strong> $<span id="total">0</span></p>
+  </div>
+
+  <script>
+    let carrito = [];
+    let total = 0;
+
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({ nombre, precio });
+      total += precio;
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      const lista = document.getElementById("listaCarrito");
+      const totalSpan = document.getElementById("total");
+
+      lista.innerHTML = "";
+
+      carrito.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - $${item.precio.toLocaleString()}`;
+        lista.appendChild(li);
+      });
+
+      totalSpan.textContent = total.toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
+
+
 
