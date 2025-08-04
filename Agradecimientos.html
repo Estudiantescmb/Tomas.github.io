@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -6,47 +6,61 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f0f4f8;
+      background-color: #e6f0ff;
       margin: 0;
       padding: 0;
       text-align: center;
     }
 
     header {
-      background-color: #004080;
+      background-color: #003366;
       color: white;
-      padding: 40px 0;
+      padding: 60px 0;
+      font-size: 48px;
+    }
+
+    main {
+      padding: 50px 20px;
+    }
+
+    .agradecimientos {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cuadro {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      max-width: 800px;
+      width: 90%;
       font-size: 28px;
-    }
-
-    section {
-      padding: 30px;
-      font-size: 20px;
       color: #333;
+      text-align: left;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
-      margin: 15px 0;
+    .cuadro strong {
+      color: #003366;
+      font-size: 32px;
     }
 
     button {
-      background-color: #004080;
+      background-color: #003366;
       color: white;
-      padding: 15px 25px;
-      font-size: 18px;
+      padding: 25px 50px;
+      font-size: 28px;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      margin-top: 30px;
+      margin-top: 60px;
     }
 
     button:hover {
-      background-color: #0066cc;
+      background-color: #0055cc;
     }
   </style>
 </head>
@@ -56,17 +70,28 @@
     Agradecimientos Especiales
   </header>
 
-  <section>
-    <p>Queremos expresar nuestro más sincero agradecimiento a:</p>
-    <ul>
-      <li><strong>Jaime Castro</strong>, por su guía y apoyo técnico.</li>
-      <li><strong>Paola Ramírez</strong>, por su colaboración y entusiasmo.</li>
-      <li><strong>Semillero de Robótica del Colegio Musical Británico</strong>, por su participación activa y compromiso.</li>
-    </ul>
+  <main>
+    <div class="agradecimientos">
 
-    <button onclick="location.href='Feria de la ciencia.html'">Regresar a Feria de la Ciencia</button>
-  </section>
+      <div class="cuadro">
+        <strong>Jaime Castro</strong><br><br>
+        Agradecemos profundamente a Jaime por su liderazgo y orientación constante. Su experiencia en el área tecnológica fue clave para el desarrollo y ejecución del proyecto. Su capacidad para motivar e innovar dejó una huella en cada integrante del equipo.
+      </div>
+
+      <div class="cuadro">
+        <strong>Paola Ramírez</strong><br><br>
+        Reconocemos a Paola por su compromiso incansable y por ser un pilar fundamental en la gestión del proyecto. Su apoyo logístico, su disposición y su entusiasmo marcaron una diferencia significativa en cada etapa del proceso.
+      </div>
+
+      <div class="cuadro">
+        <strong>Semillero de Robótica del Colegio Musical Británico</strong><br><br>
+        Gracias a cada uno de los estudiantes del semillero por su creatividad, curiosidad y dedicación. Su participación activa demostró que el aprendizaje colaborativo y el trabajo en equipo pueden generar grandes resultados.
+      </div>
+
+    </div>
+
+    <button onclick="location.href='Feria de la ciencia.html'">← Regresar a Feria de la Ciencia</button>
+  </main>
 
 </body>
 </html>
-
