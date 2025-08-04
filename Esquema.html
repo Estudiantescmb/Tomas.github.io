@@ -1,1 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Conectar ESP32 a Alexa</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #eef4fb;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #002244;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 48px;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .cuadro {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 40px;
+      margin-bottom: 60px;
+      font-size: 24px;
+    }
+
+    .cuadro h2 {
+      color: #002244;
+      font-size: 36px;
+      margin-top: 0;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto 60px auto;
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #002244;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #004488;
+    }
+
+    ul {
+      margin-top: 10px;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    strong {
+      color: #004080;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Conexión del ESP32 con Alexa: Guía Completa
+  </header>
+
+  <section>
+
+    <div class="cuadro">
+      <h2>¿Qué es el ESP32?</h2>
+      <p>
+        El <strong>ESP32</strong> es un microcontrolador de bajo costo y alto rendimiento con conectividad Wi-Fi y Bluetooth, ampliamente utilizado en proyectos de automatización, robótica y domótica. Gracias a su capacidad de conectarse a internet, puede ser integrado con plataformas como <strong>Amazon Alexa</strong> para controlar dispositivos con la voz.
+      </p>
+    </div>
+
+    <div class="cuadro">
+      <h2>¿Por qué conectar el ESP32 a Alexa?</h2>
+      <p>
+        Conectar el ESP32 a Alexa permite crear una <strong>casa inteligente</strong> personalizada. Podemos encender luces, controlar motores, sensores, cerraduras o electrodomésticos usando comandos de voz. Esta integración hace que la tecnología sea accesible, cómoda y moderna, alineándose con el concepto de <strong>Internet de las Cosas (IoT)</strong>.
+      </p>
+    </div>
+
+    <div class="cuadro">
+      <h2>Herramientas necesarias</h2>
+      <ul>
+        <li>1 ESP32 Dev Kit</li>
+        <li>Cable USB (para conexión y programación)</li>
+        <li>Cuenta de Amazon con Alexa configurada</li>
+        <li>Cuenta en <strong>Sinric Pro</strong> (servicio gratuito de vinculación con Alexa)</li>
+        <li>Editor Arduino IDE (y librerías necesarias)</li>
+        <li>Componentes: LEDs, relés, servomotores, sensores, etc.</li>
+        <li>Conexión Wi-Fi estable</li>
+      </ul>
+    </div>
+
+    <div class="cuadro">
+      <h2>¿Qué es Sinric Pro y para qué sirve?</h2>
+      <p>
+        <strong>Sinric Pro</strong> es una plataforma que actúa como intermediaria entre Alexa y el ESP32. Permite controlar dispositivos conectados con comandos de voz sin necesidad de crear una skill personalizada. Cada dispositivo se configura en la web de Sinric, generando un <strong>Device ID</strong> y un <strong>API Key</strong> que se usan en el código del ESP32.
+      </p>
+    </div>
+
+    <div class="cuadro">
+      <h2>Esquema lógico de conexión</h2>
+      <p>
+        El flujo general de conexión es:
+      </p>
+      <ul>
+        <li><strong>Alexa → Sinric Pro → ESP32 → Dispositivo físico</strong></li>
+      </ul>
+      <p>
+        Por ejemplo, al decir: <em>"Alexa, enciende la luz del cuarto"</em>, el comando se envía a Sinric, que a su vez lo transmite al ESP32. Este ejecuta una acción como activar un pin digital, encendiendo el relé que enciende la luz.
+      </p>
+    </div>
+
+    <div class="cuadro">
+      <h2>Pasos para la conexión</h2>
+      <ol>
+        <li><strong>Crear una cuenta en Sinric Pro</strong> y configurar un nuevo dispositivo virtual (ej. interruptor, servo, ventilador).</li>
+        <li><strong>Instalar el Arduino IDE</strong> con soporte para ESP32 (añadir la URL del board manager).</li>
+        <li><strong>Instalar las librerías</strong> necesarias: WiFi, SinricPro, ArduinoJson.</li>
+        <li><strong>Escribir o cargar el código</strong> en el ESP32 con los datos de Wi-Fi y las claves de Sinric Pro.</li>
+        <li><strong>Configurar la app Alexa</strong> para reconocer el nuevo dispositivo (detectado automáticamente).</li>
+        <li><strong>Conectar el componente físico</strong> (ej: LED al pin D2 o relé al pin D5).</li>
+      </ol>
+    </div>
+
+    <div class="cuadro">
+      <h2>Ejemplo de código básico</h2>
+      <p>Este es un ejemplo resumido de cómo encender un LED con Alexa:</p>
+<pre style="background:#eee; padding:20px; border-radius:10px; overflow-x:auto;">
+#include &lt;WiFi.h&gt;
+#include &lt;SinricPro.h&gt;
+#include &lt;SinricProSwitch.h&gt;
+
+#define WIFI_SSID "TuRedWiFi"
+#define WIFI_PASS "TuClaveWiFi"
+#define APP_KEY   "TuAppKey"
+#define APP_SECRET "TuAppSecret"
+#define SWITCH_ID "TuDeviceID"
+
+#define PIN_LED 2
+
+bool onPowerState(const String &deviceId, bool &state) {
+  digitalWrite(PIN_LED, state ? HIGH : LOW);
+  return true;
+}
+
+void setup() {
+  pinMode(PIN_LED, OUTPUT);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
+  while(WiFi.status() != WL_CONNECTED) delay(100);
+  
+  SinricProSwitch &mySwitch = SinricPro[SWITCH_ID];
+  mySwitch.onPowerState(onPowerState);
+  
+  SinricPro.begin(APP_KEY, APP_SECRET);
+  SinricPro.restoreDeviceStates(true);
+}
+
+void loop() {
+  SinricPro.handle();
+}
+</pre>
+    </div>
+
+    <div class="cuadro">
+      <h2>Aplicaciones prácticas</h2>
+      <ul>
+        <li>Encender/apagar luces desde la cama con comandos de voz.</li>
+        <li>Controlar persianas o cortinas mediante servos.</li>
+        <li>Activar ventiladores, bombas de agua o alarmas.</li>
+        <li>Crear una cerradura automática con Alexa.</li>
+        <li>Integración con sensores de movimiento o temperatura.</li>
+      </ul>
+    </div>
+
+    <div class="cuadro">
+      <h2>Relación con la domótica y el IoT</h2>
+      <p>
+        Este proyecto representa la base de una <strong>casa inteligente</strong>, donde los sistemas físicos y digitales se integran para facilitar tareas diarias. La combinación del ESP32, Alexa y Sinric permite tener dispositivos conectados que responden automáticamente al entorno o a la voz del usuario. Es un claro ejemplo de cómo el <strong>Internet de las Cosas (IoT)</strong> transforma el hogar, la educación y la industria.
+      </p>
+    </div>
+
+    <div class="cuadro">
+      <h2>Conclusión</h2>
+      <p>
+        Conectar un ESP32 a Alexa no solo es una actividad educativa, sino también una puerta hacia el desarrollo de tecnologías emergentes. Dominar este tipo de integración permite automatizar tareas, ahorrar energía y fomentar el pensamiento computacional. Además, brinda un sentido práctico y real a los conocimientos de programación, electrónica y redes.
+      </p>
+    </div>
+
+    <button onclick="location.href='Feria de la ciencia.html'">← Regresar a Feria de la Ciencia</button>
+
+  </section>
+
+</body>
+</html>
 
