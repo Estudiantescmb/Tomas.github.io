@@ -169,7 +169,6 @@
     <a href="#componentes">Componentes</a>
     <a href="#videos">Videos</a>
     <a href="#guias">Guías</a>
-    <a href="#estadisticas">Estadísticas</a>
 </nav>
 
 <main>
@@ -195,60 +194,290 @@
 
     <section id="componentes">
         <h2>Componentes Clave</h2>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
 
-        <h3>ESP32
-            <button class="modal-btn" onclick="window.modalEsp32.showModal();">Definición</button>
-        </h3>
-        <p>El ESP32 es el cerebro del proyecto. Es un pequeño chip con WiFi y Bluetooth para conectar sensores, controlar dispositivos y comunicarse con Internet y asistentes.</p>
-        <img src="https://www.arcaelectronica.com/cdn/shop/products/esp32-1.jpg?v=1558320955"width="250px"height="250px">
+    .componente {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        <h3>Amazon Alexa Echo
-            <button class="modal-btn" onclick="window.modalAlexa.showModal();">Definición</button>
-        </h3>
-        <p>Altavoz inteligente para controlar la casa con comandos de voz mediante Alexa.</p>
-        <img src="https://exitocol.vtexassets.com/arquivos/ids/16207970/alexa-parlante-inteligente-amazon-echo-dot-negro-5-generacion.jpg?v=638086141133100000"width="250px"height="250px">
+    .componente img {
+      width: 120px;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
 
-        <h3>Google Assistant
-            <button class="modal-btn" onclick="window.modalGoogle.showModal();">Definición</button>
-        </h3>
-        <p>El asistente de voz de Google para controlar dispositivos inteligentes con comandos hablados.</p>
-        <img src="https://orientatech.es/wp-content/uploads/2019/10/av_google_assistant-logo.png"width="250px"height="250px">
-    </section>
+    .info {
+      flex: 1;
+    }
 
-    <dialog id="modalEsp32">
-        <h3>¿Qué es ESP32?</h3>
-        <p>El ESP32 es un microcontrolador con WiFi y Bluetooth que permite controlar y conectar sensores y dispositivos en domótica, consumiendo poca energía y con gran potencia para automatizaciones.</p>
-        <img src="https://www.upesy.com/cdn/shop/articles/doc-esp32-pinout-reference-wroom-devkit_9db79068-c59c-4142-91f0-bb361d3b7dac.jpg?v=1706553444"width="250px"height="250px">
-        <button class="close-btn" onclick="window.modalEsp32.close();">Cerrar</button>
-    </dialog>
+    .info h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #333;
+    }
 
-    <dialog id="modalAlexa">
-        <h3>¿Qué es Amazon Alexa?</h3>
-        <p>Amazon Alexa es un asistente de voz popular que permite controlar dispositivos de la casa, realizar consultas y ejecutar rutinas con simples comandos hablados.</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-b16b0NDUm2JqWt8lNqCfpq-ib3lGiJXMcw&s"width="250px"height="250px">
-        <button class="close-btn" onclick="window.modalAlexa.close();">Cerrar</button>
-    </dialog>
+    .info p {
+      margin: 8px 0;
+      font-size: 14px;
+    }
 
-    <dialog id="modalGoogle">
-        <h3>¿Qué es Google Assistant?</h3>
-        <p>Google Assistant es un asistente virtual de Google que responde a comandos de voz y permite controlar diferentes dispositivos inteligentes en el hogar.</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Google_Assistant_logo.svg/800px-Google_Assistant_logo.svg.png"width="250px"height="250px">
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 13px;
+    }
 
-        <button class="close-btn" onclick="window.modalGoogle.close();">Cerrar</button>
-    </dialog>
+    dialog {
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 400px;
+      width: 80%;
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .cerrar {
+      background-color: #ff4444;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ESP32 -->
+<div class="componente">
+  <img src="https://cdn.shopify.com/s/files/1/1509/1638/products/esp32-devkit-v1-30pin-1_1024x1024.jpg" alt="ESP32">
+  <div class="info">
+    <h3>ESP32 <button onclick="modalESP32.showModal()">Definición</button></h3>
+    <p>Microcontrolador con Wi-Fi y Bluetooth para IoT.</p>
+  </div>
+</div>
+<dialog id="modalESP32">
+  <h3>ESP32</h3>
+  <p>Microcontrolador avanzado con conectividad Wi-Fi y Bluetooth, ideal para automatización y control inteligente de dispositivos.</p>
+  <button class="cerrar" onclick="modalESP32.close()">Cerrar</button>
+</dialog>
+
+<!-- ESP8266 -->
+<div class="componente">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/ESP8266_NodeMCU_devkit_1.0.jpg" alt="ESP8266">
+  <div class="info">
+    <h3>ESP8266 <button onclick="modalESP8266.showModal()">Definición</button></h3>
+    <p>Placa con Wi-Fi integrada para proyectos de domótica.</p>
+  </div>
+</div>
+<dialog id="modalESP8266">
+  <h3>ESP8266</h3>
+  <p>Microcontrolador económico con Wi-Fi, ideal para proyectos de domótica, sensores conectados y control remoto.</p>
+  <button class="cerrar" onclick="modalESP8266.close()">Cerrar</button>
+</dialog>
+
+<!-- Protoboard -->
+<div class="componente">
+  <img src="https://m.media-amazon.com/images/I/61EusD5tX5L._AC_SL1500_.jpg" alt="Protoboard">
+  <div class="info">
+    <h3>Protoboard <button onclick="modalProtoboard.showModal()">Definición</button></h3>
+    <p>Tablero para probar circuitos sin soldar.</p>
+  </div>
+</div>
+<dialog id="modalProtoboard">
+  <h3>Protoboard</h3>
+  <p>Herramienta esencial para conectar componentes electrónicamente sin necesidad de soldadura.</p>
+  <button class="cerrar" onclick="modalProtoboard.close()">Cerrar</button>
+</dialog>
+
+<!-- SG90 -->
+<div class="componente">
+  <img src="https://cdn.sparkfun.com/assets/parts/1/1/8/0/13804-01.jpg" alt="SG90">
+  <div class="info">
+    <h3>Servomotor SG90 <button onclick="modalSG90.showModal()">Definición</button></h3>
+    <p>Servo de plástico pequeño, 180° de giro.</p>
+  </div>
+</div>
+<dialog id="modalSG90">
+  <h3>Servomotor SG90</h3>
+  <p>Microservo común en proyectos educativos para realizar movimientos precisos en robots o puertas automáticas.</p>
+  <button class="cerrar" onclick="modalSG90.close()">Cerrar</button>
+</dialog>
+
+<!-- MG90S -->
+<div class="componente">
+  <img src="https://cdn.robotshop.com/media/catalog/product/cache/1/image/800x800/9df78eab33525d08d6e5fb8d27136e95/d/f/df05mg-metal-gear-micro-servo.jpg" alt="MG90S">
+  <div class="info">
+    <h3>Servomotor MG90S <button onclick="modalMG90S.showModal()">Definición</button></h3>
+    <p>Servo metálico con más fuerza y precisión.</p>
+  </div>
+</div>
+<dialog id="modalMG90S">
+  <h3>Servomotor MG90S</h3>
+  <p>Versión mejorada del SG90 con engranajes metálicos, mayor durabilidad y torque para tareas exigentes.</p>
+  <button class="cerrar" onclick="modalMG90S.close()">Cerrar</button>
+</dialog>
+
+<!-- Relé -->
+<div class="componente">
+  <img src="https://cdn.sparkfun.com/assets/parts/1/1/2/0/13815-01.jpg" alt="Relé">
+  <div class="info">
+    <h3>Relé Arduino <button onclick="modalRele.showModal()">Definición</button></h3>
+    <p>Interruptor eléctrico que permite encender aparatos.</p>
+  </div>
+</div>
+<dialog id="modalRele">
+  <h3>Relé</h3>
+  <p>Permite controlar dispositivos de alto voltaje (como bombillos o electrodomésticos) desde un microcontrolador.</p>
+  <button class="cerrar" onclick="modalRele.close()">Cerrar</button>
+</dialog>
+
+<!-- Bombillo LED -->
+<div class="componente">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/LED_bulb_E27_230V.jpg" alt="Bombillo LED">
+  <div class="info">
+    <h3>Bombillo LED <button onclick="modalLed.showModal()">Definición</button></h3>
+    <p>Fuente de luz eficiente, controlable por relé o app.</p>
+  </div>
+</div>
+<dialog id="modalLed">
+  <h3>Bombillo LED</h3>
+  <p>Iluminación de bajo consumo usada en automatización del hogar. Puede ser controlado remotamente usando relés y microcontroladores.</p>
+  <button class="cerrar" onclick="modalLed.close()">Cerrar</button>
+</dialog>
+
+<!-- Resistencia -->
+<div class="componente">
+  <img src="https://www.electronicshub.org/wp-content/uploads/2021/08/Resistor.jpg" alt="Resistencia">
+  <div class="info">
+    <h3>Resistencia 200Ω <button onclick="modalResistencia.showModal()">Definición</button></h3>
+    <p>Limita el paso de corriente en un circuito.</p>
+  </div>
+</div>
+<dialog id="modalResistencia">
+  <h3>Resistencia 200 Ohmios</h3>
+  <p>Usada para proteger componentes como LEDs de sobrecorriente. Es esencial para evitar daños en circuitos electrónicos.</p>
+  <button class="cerrar" onclick="modalResistencia.close()">Cerrar</button>
+</dialog>
+
+<!-- Arduino UNO -->
+<div class="componente">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/Arduino_Uno_-_R3.jpg" alt="Arduino UNO">
+  <div class="info">
+    <h3>Arduino Uno <button onclick="modalUno.showModal()">Definición</button></h3>
+    <p>Placa de desarrollo básica para proyectos electrónicos.</p>
+  </div>
+</div>
+<dialog id="modalUno">
+  <h3>Arduino Uno</h3>
+  <p>Microcontrolador ideal para principiantes. Fácil de programar y conectar con sensores, servos y módulos electrónicos.</p>
+  <button class="cerrar" onclick="modalUno.close()">Cerrar</button>
+</dialog>
+
+<!-- Puente H L298 -->
+<div class="componente">
+  <img src="https://cdn.sparkfun.com/assets/parts/1/1/5/4/13837-01.jpg" alt="L298N">
+  <div class="info">
+    <h3>Puente H L298 <button onclick="modalL298.showModal()">Definición</button></h3>
+    <p>Controlador de motores DC o paso a paso.</p>
+  </div>
+</div>
+<dialog id="modalL298">
+  <h3>Puente H L298</h3>
+  <p>Módulo que permite controlar la dirección y velocidad de motores, permitiendo avanzar o retroceder.</p>
+  <button class="cerrar" onclick="modalL298.close()">Cerrar</button>
+</dialog>
+
+<!-- Jumpers -->
+<div class="componente">
+  <img src="https://m.media-amazon.com/images/I/81gVzWjZChL._AC_SL1500_.jpg" alt="Jumpers">
+  <div class="info">
+    <h3>Jumpers <button onclick="modalJumpers.showModal()">Definición</button></h3>
+    <p>Cables para conectar componentes en protoboard.</p>
+  </div>
+</div>
+<dialog id="modalJumpers">
+  <h3>Jumpers</h3>
+  <p>Cables flexibles que permiten conectar pines, sensores, placas y módulos entre sí. Vienen en varias longitudes.</p>
+  <button class="cerrar" onclick="modalJumpers.close()">Cerrar</button>
+</dialog>
+
+<!-- Enchufe Alexa -->
+<div class="componente">
+  <img src="https://m.media-amazon.com/images/I/61Ae2e2vPBL._AC_SL1500_.jpg" alt="Enchufe Alexa">
+  <div class="info">
+    <h3>Enchufe Alexa <button onclick="modalEnchufe.showModal()">Definición</button></h3>
+    <p>Permite encender o apagar dispositivos con la voz.</p>
+  </div>
+</div>
+<dialog id="modalEnchufe">
+  <h3>Enchufe Alexa</h3>
+  <p>Dispositivo inteligente que se conecta al Wi-Fi y permite controlar electrodomésticos desde Alexa o apps móviles.</p>
+  <button class="cerrar" onclick="modalEnchufe.close()">Cerrar</button>
+</dialog>
+
+<!-- Amazon Echo Show -->
+<div class="componente">
+  <img src="https://m.media-amazon.com/images/I/61zAjw4bqPL._AC_SL1000_.jpg" alt="Echo Show">
+  <div class="info">
+    <h3>Amazon Alexa Echo Show <button onclick="modalEcho.showModal()">Definición</button></h3>
+    <p>Altavoz inteligente con pantalla y asistente Alexa.</p>
+  </div>
+</div>
+<dialog id="modalEcho">
+  <h3>Amazon Echo Show</h3>
+  <p>Dispositivo con pantalla táctil y el asistente Alexa integrado. Permite controlar dispositivos del hogar con voz o visualmente.</p>
+  <button class="cerrar" onclick="modalEcho.close()">Cerrar</button>
+</dialog>
+
+<!-- Google Assistant -->
+<div class="componente">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Assistant_logo.png" alt="Google Assistant">
+  <div class="info">
+    <h3>Google Assistant <button onclick="modalGoogle.showModal()">Definición</button></h3>
+    <p>Asistente virtual de Google para el hogar inteligente.</p>
+  </div>
+</div>
+<dialog id="modalGoogle">
+  <h3>Google Assistant</h3>
+  <p>Asistente de voz que permite controlar luces, enchufes y otros dispositivos mediante comandos hablados desde un móvil o altavoz.</p>
+  <button class="cerrar" onclick="modalGoogle.close()">Cerrar</button>
+</dialog>
+
+</body>
+</html>
+
 
     <section id="videos">
         <h2>Videos Explicativos</h2>
+              <h3>Configurar dispositivos Iot</h3>
+      <iframe 
+  width="100%" 
+  height="500" 
+  src="https://www.youtube.com/embed/YSVoxUxyASw" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+  allowfullscreen>
+</iframe>
 
         <h3>Amazon Alexa</h3>
         <iframe src="https://www.youtube.com/embed/tRjFdOyLVms" allowfullscreen></iframe>
-
-        <h3>Google Assistant</h3>
-        <iframe src="https://www.youtube.com/embed/g7ViPq4ZSsc" allowfullscreen></iframe>
-
-        <h3>Tinkercad - Simulación y Diseño</h3>
-        <iframe src="https://www.youtube.com/embed/gWk8t4CF6VI" allowfullscreen></iframe>
-    </section>
 
     <section id="guias">
         <h2>Guías y Manuales</h2>
@@ -271,28 +500,184 @@
             <li>Crea tableros con sensores.</li>
             <li>Personaliza widgets con botones y gráficos.</li>
         </ol>
-    </section>
+        <br>
+        <br>
 
-    <section id="estadisticas">
-        <h2>Gráficos y Estadísticas</h2>
-        <p>Datos aproximados típicos en nuestro hogar inteligente:</p>
-        <div class="bar-chart">
-            <div class="bar" style="height:130px;"><span>23°C</span></div>
-            <div class="bar" style="height:90px;"><span>50%</span></div>
-            <div class="bar" style="height:170px;"><span>400 kWh</span></div>
-            <div class="bar" style="height:110px;"><span>80 dB</span></div>
-        </div>
-        <div class="two-col" style="max-width: 600px; margin: 10px auto 0 auto;">
-            <div class="bar-label">Temperatura</div>
-            <div class="bar-label">Humedad</div>
-            <div class="bar-label">Consumo Energético</div>
-            <div class="bar-label">Ruido</div>
-        </div>
-    </section>
+  <div style="max-width: 400px; border: 2px solid #00979D; border-radius: 12px; padding: 20px; background-color: #f8f9fa; font-family: Arial, sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <h2 style="color: #00979D; margin-top: 0;">Descargar Arduino IDE</h2>
+  <p style="font-size: 14px; color: #333;">
+    Accede a la última versión del software oficial de Arduino para programar tus placas. Disponible para Windows, macOS y Linux.
+  </p>
+  <a href="https://www.arduino.cc/en/software/" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #00979D; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+    Ir a la descarga →
+  </a>
+</div>
+        </ol>
+        </ol>
+<div style="max-width: 400px; border: 2px solid #232F3E; border-radius: 12px; padding: 20px; background-color: #f1f2f3; font-family: Arial, sans-serif; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <div style="display: flex; align-items: center; margin-bottom: 10px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Amazon_Alexa_blue_logo.svg/1200px-Amazon_Alexa_blue_logo.svg.png " alt="Alexa Logo" style="height: 40px; margin-right: 10px;">
+    <h2 style="color: #232F3E; margin: 0;">Amazon Alexa</h2>
+  </div>
+  <p style="font-size: 14px; color: #333;">
+    Controla dispositivos inteligentes con tu voz, escucha música, obtén noticias, configura rutinas y mucho más con Alexa.
+  </p>
+  <a href="https://alexa.amazon.com/" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #00CAFF; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">
+    Ir a Alexa →
+  </a>
+</div>
+
+<div class="sinricpro-widget">
+  <a href="https://sinric.pro/" target="_blank" title="Visita Sinric Pro">
+    <img src="https://avatars.githubusercontent.com/u/51923404?v=4" alt="Sinric Pro" style="width: 60px; height: auto;">
+  </a>
+</div>
+
+<div class="arduino-widget">
+  <a href="https://cloud.arduino.cc/" target="_blank" title="Visita Arduino Cloud">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Arduino_Logo.svg" alt="Arduino Cloud" style="width: 60px; height: auto;">
+  </a>
+</div>
+
+<br>
+<br>
+        <br>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consumo Energético: 2024 vs 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f8f9fa;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: white;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .reduccion {
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Consumo Energético de Enero a Junio (2024 vs 2025)</h2>
+  <p>Después de implementar tecnología domótica, el consumo energético bajó significativamente en 2025.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Mes</th>
+        <th>Consumo 2024 (kWh)</th>
+        <th>Consumo 2025 (kWh)</th>
+        <th>Ahorro (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Enero</td>
+        <td>680</td>
+        <td>510</td>
+        <td class="reduccion">25.0%</td>
+      </tr>
+      <tr>
+        <td>Febrero</td>
+        <td>660</td>
+        <td>500</td>
+        <td class="reduccion">24.2%</td>
+      </tr>
+      <tr>
+        <td>Marzo</td>
+        <td>700</td>
+        <td>520</td>
+        <td class="reduccion">25.7%</td>
+      </tr>
+      <tr>
+        <td>Abril</td>
+        <td>690</td>
+        <td>515</td>
+        <td class="reduccion">25.4%</td>
+      </tr>
+      <tr>
+        <td>Mayo</td>
+        <td>720</td>
+        <td>540</td>
+        <td class="reduccion">25.0%</td>
+      </tr>
+      <tr>
+        <td>Junio</td>
+        <td>710</td>
+        <td>530</td>
+        <td class="reduccion">25.4%</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Qué es Casa Inteligente?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 {
+      color: #004080;
+    }
+    .contenido {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .contenido img {
+      width: 300px;
+      border-radius: 10px;
+    }
+    ul {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+
 
 </main>
 
 </body>
-</html>
+<
+
 
 
